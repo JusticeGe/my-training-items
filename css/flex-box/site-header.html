@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .siteHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #56727c;
+    font-size: 12px;
+    color: #fff
+  }
+
+  .siteHeader__section {
+    display: flex;
+    align-items: center
+  }
+
+  .siteHeader__item {
+    padding: 5px 15px;
+  }
+
+  .is-site-header-item-selected {
+    background-color: #415f69;
+    color: #ffffff;
+    border-radius: 4px;
+  }
+</style>
+
+<body>
+  <div class="siteHeader">
+    <!-- This section gets pushed to the left side-->
+    <div class="siteHeader__section">
+      <div class="siteHeader__item siteHeaderLogo">
+        <div class="fa fa-inbox"></div>
+      </div>
+      <div class="siteHeader__item siteHeaderButton is-site-header-item-selected">Inbox</div>
+      <div class="siteHeader__item siteHeaderButton">Sent</div>
+      <div class="siteHeader__item siteHeaderButton">Trash</div>
+    </div>
+    <!-- This section gets pushed to the right side-->
+    <div class="siteHeader__section">
+      <div class="siteHeader__item siteHeaderButton">Settings</div>
+      <div class="siteHeader__item siteHeaderButton">Log out</div>
+    </div>
+  </div>
+</body>
+
+</html>
