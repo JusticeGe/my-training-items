@@ -83,18 +83,29 @@ console.log(a > b)
 
 
 // ! this 问题
+/*
+var A = function () {}
+A.prototype.n = 1
+var b = new A()
+A.prototype = {
+  n: 2,
+  m: 3
+}
+var c = new A()
 
-var a = 1
+console.log(b.n, b.m)
+console.log(c.n, c.m)
+*/
+var F = function () {}
 
-function foo() {
-  console.log(this.a)
+F.prototype.a = function () {
+  console.log('b')
 }
 
-foo()
+var a = new F()
 
-const b = {
-  a: 10,
-  foo: foo
+F.prototype.a = function () {
+  console.log('a')
 }
 
-b.foo()
+a.a()
