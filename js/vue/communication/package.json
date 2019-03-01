@@ -1,7 +1,7 @@
 {
   "name": "communication",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "联系组件间通信的项目",
   "author": "gechen <gechen@world.com>",
   "private": true,
   "scripts": {
