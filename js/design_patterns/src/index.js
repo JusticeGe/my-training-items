@@ -1,12 +1,3 @@
-class Person {
-  constructor (name) {
-    this.name = name
-  }
-  getName () {
-    return this.name
-  }
+class  jQuery {
+    constructor(seletor){}
 }
-
-let p = new Person('葛晨')
-
-alert(p.getName())
