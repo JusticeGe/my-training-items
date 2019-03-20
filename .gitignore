@@ -3,3 +3,4 @@ launch.json
 .idea/
 .idea
 release/
+.DS_Store
