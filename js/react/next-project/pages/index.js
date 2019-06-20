@@ -4,5 +4,6 @@ import React from 'react'
 export default () =>
   React.createElement('span', {}, 'HelloGc' );
  */
-export default () => <span>hello word</span>
-
+// import '../test.css'
+import {Button} from 'antd'
+export default () => <Button>hello word</Button>
