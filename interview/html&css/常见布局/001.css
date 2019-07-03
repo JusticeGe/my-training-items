@@ -1,0 +1,29 @@
+*{
+  margin: 0;
+  padding: 0
+}
+.content{
+ padding: 0 200px;
+}
+.column{
+  float: left;
+  height: 200px;
+}
+.header{
+  height: 100px;
+  background: #000000
+}
+.left{
+  width: 200px;
+  margin-left: -100%;
+  background: blueviolet;
+  position: relative;
+  right: 200px;
+}
+.right{
+  width: 200px;
+  background: #5f5f5f
+}
+.center{
+  width: 100%;
+}

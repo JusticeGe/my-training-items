@@ -11,3 +11,11 @@ let jt = test(5)
 // console.log(jt.next(), jt.next(), jt.next())
 
 console.log(jt.next(), jt.next(5), jt.next(12))
+
+setTimeout(() => {
+  console.log('timer21')
+}, 0)
+  
+Promise.resolve().then(function() {
+  console.log('promise1')
+})
