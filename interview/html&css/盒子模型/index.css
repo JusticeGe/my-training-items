@@ -1,0 +1,15 @@
+.content--box{
+ box-sizing: content-box
+}
+.border-box{
+  /* 如果高度不足会被撑开 */
+  box-sizing: border-box
+}
+div{
+  background: #000;
+  margin: 10px;
+  padding: 10px;
+  border: 10px #ccc solid;
+  width: 10px;
+  height: 10px;
+}
