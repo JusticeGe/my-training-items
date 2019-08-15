@@ -1,5 +1,6 @@
 package main
 
+import "fmt"
 func main() {
-	$END$
+	fmt.println("hello world")
 }
