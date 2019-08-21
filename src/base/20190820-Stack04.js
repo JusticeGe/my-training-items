@@ -10,7 +10,7 @@ class Stack{
     s.push(el)
   }
   pop() {
-    const s = items.get(this)
+    const s = items.get(this) 
     const r = s.pop()
     return r
   }

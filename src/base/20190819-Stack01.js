@@ -1,4 +1,4 @@
-class Stack {
+ class Stack {
 
     constructor() {
         this.items = []
@@ -47,7 +47,6 @@ class Stack {
     }
 }
 
-const stack = new Stack()
-console.log(stack.isEmpty())
-stack.push(11)
-stack.push(15)
+module.exports = {
+    Stack
+}
