@@ -1,0 +1,12 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "20190819-Stack01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "try": "tsc 20190823-ThreeSum.ts --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
