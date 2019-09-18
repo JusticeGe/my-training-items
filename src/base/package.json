@@ -4,8 +4,7 @@
   "description": "",
   "main": "20190819-Stack01.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "try": "tsc 20190823-ThreeSum.ts --watch"
+    "test": "tsc --watch"
   },
   "author": "",
   "license": "ISC"
