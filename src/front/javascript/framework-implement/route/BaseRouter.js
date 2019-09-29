@@ -1,6 +1,0 @@
-class BaseRouter {
-  
-  constructor() {
-    
-  }
-}
