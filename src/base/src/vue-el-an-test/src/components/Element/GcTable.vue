@@ -102,7 +102,7 @@ export default {
         { type: "index", prop: "a", label: "序号" },
         { type: "selection", prop: "cc", label: "全选" },
         { label: "姓名", prop: "name" },
-        { slot: "try", label: "try", prop: "xx", fixed: "right" },
+        // { slot: "try", label: "try", prop: "xx", fixed: "right" },
         { label: "年龄", prop: "age" },
         { label: "学校", prop: "school" },
         { label: "地址", prop: "address" },
@@ -135,7 +135,7 @@ export default {
         }
       ],
       value: [],
-      fixed: "right",
+      fixed: "",
       tableCol: []
     };
   },
@@ -169,11 +169,20 @@ export default {
         animation: 180,
         delay: 0,
         onEnd: evt => {
-          console.log(evt.oldIndex, evt.newIndex);
-          const oldItem = this.tableCol[evt.oldIndex];
-          this.tableCol.splice(evt.oldIndex, 1);
+          let fixedIndex = -1;
+          this.tableCol.forEach((item, index) => {
+            if (this.fixed === item.prop) {
+              fixedIndex = index;
+            }
+          });
+          const newIndex =
+            evt.newIndex <= fixedIndex ? evt.newIndex - 1 : evt.newIndex;
+          const oldIndex =
+            evt.oldIndex <= fixedIndex ? evt.oldIndex - 1 : evt.oldIndex;
+          const oldItem = this.tableCol[oldIndex];
+          this.tableCol.splice(oldIndex, 1);
           setTimeout(() => {
-            this.tableCol.splice(evt.newIndex, 0, oldItem);
+            this.tableCol.splice(newIndex, 0, oldItem);
           });
         }
       });
