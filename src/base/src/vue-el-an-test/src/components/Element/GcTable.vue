@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card style="text-align: center">
     <el-row style="margin-bottom: 10px">
       <el-col :span="operate" style="text-align: left">
         <slot><span>&nbsp;</span></slot>
@@ -87,6 +87,16 @@
         </el-table-column>
       </template>
     </el-table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="page"
+      :page-sizes="sizes"
+      :page-size="size"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total"
+    >
+    </el-pagination>
   </el-card>
 </template>
 
@@ -94,6 +104,7 @@
 import Sortable from "sortablejs";
 export default {
   name: "GcTable",
+  props: ["page", "size", "total"],
   data() {
     return {
       operate: 12,
@@ -136,7 +147,8 @@ export default {
       ],
       value: [],
       fixed: "",
-      tableCol: []
+      tableCol: [],
+      sizes: [10, 20, 30, 40, 50]
     };
   },
   watch: {
@@ -180,12 +192,21 @@ export default {
           const oldIndex =
             evt.oldIndex <= fixedIndex ? evt.oldIndex - 1 : evt.oldIndex;
           const oldItem = this.tableCol[oldIndex];
+          if (this.tableCol[newIndex].fixed || this.tableCol[oldIndex].fixed) {
+            return;
+          }
           this.tableCol.splice(oldIndex, 1);
           setTimeout(() => {
             this.tableCol.splice(newIndex, 0, oldItem);
           });
         }
       });
+    },
+    handleSizeChange(val) {
+      this.$emit("handleSizeChange", val);
+    },
+    handleCurrentChange(val) {
+      this.$emit("handleSizeChange", val);
     }
   },
   mounted() {

@@ -2,7 +2,7 @@
   <div class="element">
     <el-tabs v-model="activeName">
       <el-tab-pane label="el-table" name="table">
-        <gc-table>
+        <gc-table :size.sync="size" :page.sync="page" :total="total">
           <template type="primary" size="mini" v-slot:try="row">
             <el-button size="mini" type="primary">click</el-button>
           </template>
@@ -39,9 +39,13 @@ export default {
   },
   data() {
     return {
-      activeName: "table"
+      activeName: "table",
+      page: 1,
+      size: 20,
+      total: 50
     };
   },
+  methods: {},
   mounted() {}
 };
 </script>
