@@ -11,8 +11,8 @@
   </div>
 </template>
 <script>
-import TestA from '@/components/VueTest/TestA'
-import TestB from "@/components/VueTest/TestB"
+import TestA from "@/components/VueTest/TestA";
+import TestB from "@/components/VueTest/TestB";
 export default {
   components: {
     TestA,
@@ -20,8 +20,8 @@ export default {
   },
   data() {
     return {
-      activeName: 'v-model'
-    }
+      activeName: "v-model"
+    };
   }
-}
+};
 </script>

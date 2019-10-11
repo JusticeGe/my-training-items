@@ -6,11 +6,11 @@
 </template>
 <script>
 export default {
-  props: ['show'],
+  props: ["show"],
   methods: {
     closeModel() {
-      this.$emit("update:show", false)
+      this.$emit("update:show", false);
     }
   }
-}
+};
 </script>

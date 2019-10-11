@@ -1,29 +1,27 @@
 <template>
   <div style="width:800px">
-
-    <el-table :data="tableData"
-      border
-      row-key="id"
-      align="left">
-      <el-table-column v-for="(item, index) in col"
+    <el-table :data="tableData" border row-key="id" align="left">
+      <el-table-column
+        v-for="(item, index) in col"
         :key="`col_${index}`"
         :prop="dropCol[index].prop"
-        :label="item.label"> 
+        :label="item.label"
+      >
       </el-table-column>
     </el-table>
     <pre style="text-align: left">
-      {{dropCol}}
+      {{ dropCol }}
     </pre>
-    <hr>
+    <hr />
     <pre style="text-align: left">
-      {{tableData}}
+      {{ tableData }}
     </pre>
   </div>
 </template>
 <script>
-import Sortable from 'sortablejs'
+import Sortable from "sortablejs";
 export default {
-  props: ['col', 'dropCol', 'tableData'],
+  props: ["col", "dropCol", "tableData"],
   data() {
     return {
       // col: [
@@ -80,41 +78,41 @@ export default {
       //     address: '上海市普陀区金沙江路 400 弄'
       //   }
       // ]
-    }
+    };
   },
   mounted() {
-    this.rowDrop()
-    this.columnDrop()
+    this.rowDrop();
+    this.columnDrop();
   },
   methods: {
     //行拖拽
     rowDrop() {
-      const tbody = document.querySelector('.el-table__body-wrapper tbody')
-      const _this = this
+      const tbody = document.querySelector(".el-table__body-wrapper tbody");
+      const _this = this;
       Sortable.create(tbody, {
         onEnd({ newIndex, oldIndex }) {
-          const currRow = _this.tableData.splice(oldIndex, 1)[0]
-          _this.tableData.splice(newIndex, 0, currRow)
+          const currRow = _this.tableData.splice(oldIndex, 1)[0];
+          _this.tableData.splice(newIndex, 0, currRow);
         }
-      })
+      });
     },
     //列拖拽
     columnDrop() {
-      const wrapperTr = document.querySelector('.el-table__header-wrapper tr')
+      const wrapperTr = document.querySelector(".el-table__header-wrapper tr");
       console.log(
         Sortable.create(wrapperTr, {
           animation: 180,
           delay: 0,
           onEnd: evt => {
-            console.log(evt)
-            const oldItem = this.dropCol[evt.oldIndex]
-            this.dropCol.splice(evt.oldIndex, 1)
-            this.dropCol.splice(evt.newIndex, 0, oldItem)
+            console.log(evt);
+            const oldItem = this.dropCol[evt.oldIndex];
+            this.dropCol.splice(evt.oldIndex, 1);
+            this.dropCol.splice(evt.newIndex, 0, oldItem);
           }
         })
-      )
-      console.log(Sortable)
+      );
+      console.log(Sortable);
     }
   }
-}
+};
 </script>

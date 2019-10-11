@@ -44,7 +44,7 @@ export function mapObj(val, argObj) {
   let valArr = val.split(",");
   let map = argObj.map;
   let retMap = map.filter(item => {
-    valArr.indexOf(item.key) > -1
+    valArr.indexOf(item.key) > -1;
   });
   let returnVal = "";
   retMap.forEach(item => {

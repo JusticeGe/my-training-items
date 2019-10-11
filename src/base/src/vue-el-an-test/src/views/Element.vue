@@ -4,7 +4,7 @@
       <el-tab-pane label="el-table" name="table">
         <gc-table>
           <el-row>
-            <el-button type="text">删</el-button>
+            <el-button type="text">删除</el-button>
           </el-row>
         </gc-table>
       </el-tab-pane>
@@ -16,7 +16,12 @@
       </el-tab-pane>
       <el-tab-pane label="test-sortable-table" name="test-sortable-table">
         <template>
-          <test-sortable-table :col='col' :dropCol='dropCol' :tableData='tableData' ref="testSort"></test-sortable-table>
+          <test-sortable-table
+            :col="col"
+            :dropCol="dropCol"
+            :tableData="tableData"
+            ref="testSort"
+          ></test-sortable-table>
         </template>
       </el-tab-pane>
     </el-tabs>
@@ -27,9 +32,8 @@
 // @ is an alias to /src
 import GcTable from "../components/Element/GcTable";
 import GcForm from "@/components/Element/GcForm";
-import TestRowClick from "@/components/Element/TestRowClick"
-import TestSortableTable from "@/components/Element/TestSortableTable"
-import Sortable from 'sortablejs'
+import TestRowClick from "@/components/Element/TestRowClick";
+import TestSortableTable from "@/components/Element/TestSortableTable";
 export default {
   name: "home",
   components: {
@@ -40,64 +44,9 @@ export default {
   },
   data() {
     return {
-      activeName: "form",
-      col: [
-        {
-          label: '日期',
-          prop: 'date'
-        },
-        {
-          label: '姓名',
-          prop: 'name'
-        },
-        {
-          label: '地址',
-          prop: 'address'
-        }
-      ],
-      dropCol: [
-        {
-          label: '日期',
-          prop: 'date'
-        },
-        {
-          label: '姓名',
-          prop: 'name'
-        },
-        {
-          label: '地址',
-          prop: 'address'
-        }
-      ],
-      tableData: [
-        {
-          id: '1',
-          date: '2016-05-02',
-          name: '王小虎1',
-          address: '上海市普陀区金沙江路 100 弄'
-        },
-        {
-          id: '2',
-          date: '2016-05-04',
-          name: '王小虎2',
-          address: '上海市普陀区金沙江路 200 弄'
-        },
-        {
-          id: '3',
-          date: '2016-05-01',
-          name: '王小虎3',
-          address: '上海市普陀区金沙江路 300 弄'
-        },
-        {
-          id: '4',
-          date: '2016-05-03',
-          name: '王小虎4',
-          address: '上海市普陀区金沙江路 400 弄'
-        }
-      ]
+      activeName: "table"
     };
   },
-  mounted(){
-  }
+  mounted() {}
 };
 </script>
