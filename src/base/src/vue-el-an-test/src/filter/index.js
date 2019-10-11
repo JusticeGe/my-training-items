@@ -12,7 +12,7 @@ export function parseTableData(row, prop, funcArr) {
   } else {
     if (funcArr) {
       funcArr.forEach(it => {
-        value = it(value, prop);
+        value = func[it](value, prop);
       });
     }
   }
@@ -52,3 +52,11 @@ export function mapObj(val, argObj) {
   });
   return returnVal;
 }
+
+export function toStr(val) {
+  return val + "";
+}
+
+let func = {
+  toStr
+};

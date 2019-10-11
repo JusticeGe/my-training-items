@@ -3,25 +3,20 @@
     <el-tabs v-model="activeName">
       <el-tab-pane label="el-table" name="table">
         <gc-table>
-          <el-row>
-            <el-button type="text">删除</el-button>
-          </el-row>
+          <template type="primary" size="mini" v-slot:try="row">
+            <el-button size="mini" type="primary">click</el-button>
+          </template>
         </gc-table>
       </el-tab-pane>
       <el-tab-pane label="el-form" name="form">
-        <gc-form></gc-form>
+        <gc-form> </gc-form>
       </el-tab-pane>
       <el-tab-pane label="el-table-test" name="el-table-test">
         <test-row-click></test-row-click>
       </el-tab-pane>
       <el-tab-pane label="test-sortable-table" name="test-sortable-table">
         <template>
-          <test-sortable-table
-            :col="col"
-            :dropCol="dropCol"
-            :tableData="tableData"
-            ref="testSort"
-          ></test-sortable-table>
+          <test-sortable-table></test-sortable-table>
         </template>
       </el-tab-pane>
     </el-tabs>
