@@ -64,23 +64,17 @@
 export default {
   name: "GcForm",
   props: {
-    num: {
-      type: String || Number,
-      validator: val => {
-        const value = Number(val);
-        return !isNaN(value);
-      }
+    form: {
+      type: Object,
+      default: () => {}
     },
-    // form: {
-    //   type: Object,
-    //   default: () => {}
-    // },
     items: {
       type: Array,
       default: () => []
     },
     labelPosition: {
       type: String,
+      default: "left",
       validator: val => ["right", "left", "top"].indexOf(val) > -1
     },
     span: {
@@ -93,11 +87,7 @@ export default {
     }
   },
   data() {
-    return {
-      form: {
-        name: "asdasd"
-      }
-    };
+    return {};
   },
   methods: {
     filterLabel(item) {

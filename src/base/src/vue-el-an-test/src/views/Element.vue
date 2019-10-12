@@ -11,6 +11,9 @@
       <el-tab-pane label="el-form" name="form">
         <gc-form> </gc-form>
       </el-tab-pane>
+      <el-tab-pane label="demo01" name="demo01">
+        <demo-01></demo-01>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -19,15 +22,17 @@
 // @ is an alias to /src
 import GcTable from "../components/Element/GcTable";
 import GcForm from "@/components/Element/GcForm/index";
+import Demo01 from "@/components/Element/Demo01/index";
 export default {
   name: "home",
   components: {
     GcTable,
-    GcForm
+    GcForm,
+    Demo01
   },
   data() {
     return {
-      activeName: "form",
+      activeName: "demo01",
       page: 1,
       size: 20,
       total: 50
