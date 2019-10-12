@@ -1,7 +1,7 @@
 <template>
   <div>
     <child-b :show.sync="show"></child-b>
-    <button @click="show=true">打开model</button>
+    <button @click="show = true">打开model</button>
   </div>
 </template>
 <script>
@@ -10,10 +10,10 @@ export default {
   components: {
     ChildB
   },
-  data () {
+  data() {
     return {
       show: false
-    }
+    };
   }
-}
+};
 </script>

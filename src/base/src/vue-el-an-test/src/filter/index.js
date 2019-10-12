@@ -12,12 +12,20 @@ export function parseTableData(row, prop, funcArr) {
   } else {
     if (funcArr) {
       funcArr.forEach(it => {
-        value = it(value, prop);
+        value = func[it](value, prop);
       });
     }
   }
   return value;
 }
+
+/**
+ * 过滤数据
+ *
+ * @export
+ * @param {*} args
+ */
+export function parseFormData() {}
 
 /**
  * table数据获取工具
@@ -44,7 +52,7 @@ export function mapObj(val, argObj) {
   let valArr = val.split(",");
   let map = argObj.map;
   let retMap = map.filter(item => {
-    valArr.indexOf(item.key) > -1
+    valArr.indexOf(item.key) > -1;
   });
   let returnVal = "";
   retMap.forEach(item => {
@@ -52,3 +60,11 @@ export function mapObj(val, argObj) {
   });
   return returnVal;
 }
+
+export function toStr(val) {
+  return val + "";
+}
+
+let func = {
+  toStr
+};

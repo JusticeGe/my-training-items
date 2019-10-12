@@ -5,10 +5,13 @@ import store from "./store";
 import * as filters from "./filter";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
+import VueDND from "awe-dnd";
 
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
+
+Vue.use(VueDND);
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {
