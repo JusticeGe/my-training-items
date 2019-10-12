@@ -113,7 +113,6 @@ export default {
         { type: "index", prop: "a", label: "序号" },
         { type: "selection", prop: "cc", label: "全选" },
         { label: "姓名", prop: "name" },
-        // { slot: "try", label: "try", prop: "xx", fixed: "right" },
         { label: "年龄", prop: "age" },
         { label: "学校", prop: "school" },
         { label: "地址", prop: "address" },

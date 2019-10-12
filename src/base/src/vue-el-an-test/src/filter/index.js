@@ -20,6 +20,14 @@ export function parseTableData(row, prop, funcArr) {
 }
 
 /**
+ * 过滤数据
+ *
+ * @export
+ * @param {*} args
+ */
+export function parseFormData() {}
+
+/**
  * table数据获取工具
  * @param {Object} row 数据原型
  * @param {String} obj 属性值以.分割
