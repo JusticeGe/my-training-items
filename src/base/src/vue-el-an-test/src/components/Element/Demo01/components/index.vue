@@ -1,33 +1,34 @@
 <template>
-  <el-card>
+  <div>
     <el-row>
-      <el-select size="mini"> </el-select>
-      <gc-form :span="5" :items="items" :form="form"></gc-form>
-      <!-- <demo v-if='count > 10'></demo> -->
-      <el-button size="mini" type="primary"> +() </el-button>
+      <el-input></el-input>
     </el-row>
-  </el-card>
+  </div>
 </template>
 <script>
-import GcForm from "../../GcForm/Components/index";
+// import GcForm from "../../GcForm/Components/index";
 export default {
-  components: { GcForm },
+  // components: { GcForm },
   name: "Demo",
+  props: {
+    func: {
+      type: Object,
+      default: () => {}
+    }
+  },
   data() {
     return {
-      items: [
-        { el: "input", prop: "name" },
-        { el: "input", prop: "age" },
-        { el: "input", prop: "sex" }
-      ],
-      form: {
-        name: "gc",
-        age: 18,
-        sex: "男"
-      },
-      test: ["", "", ""],
-      count: 0
+      newFunc: {}
     };
+  },
+  created() {
+    this.newFunc = JSON.parse(JSON.stringify(this.func));
+  },
+  methods: {
+    add() {
+      this.func.children.push(this.newFunc);
+      console.log(this.func, this.newFunc);
+    }
   }
 };
 </script>
