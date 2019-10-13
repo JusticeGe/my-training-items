@@ -9,5 +9,4 @@ for i in range(3, 10000):
         if i % j == 0:
             sum += j
     if sum == i:
-        print(i,sum)
-        
+        print(i, sum)

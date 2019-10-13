@@ -11,5 +11,5 @@
 for i in range(0, 20):
     for j in range(0, 33):
         z = 100 - i - j
-        if  5 * i + 3 * j + z / 3== 100: 
+        if 5 * i + 3 * j + z / 3 == 100:
             print(i, j, z)
