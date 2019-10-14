@@ -20,7 +20,7 @@
 
 <script>
 // @ is an alias to /src
-import GcTable from "../components/Element/GcTable";
+import GcTable from "../components/Element/GcTable/index";
 import GcForm from "@/components/Element/GcForm/index";
 import Demo01 from "@/components/Element/Demo01/index";
 export default {

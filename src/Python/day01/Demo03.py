@@ -28,7 +28,7 @@ while money > 0:
         money -= dept
     else:
         while need_go_on:
-            # need_go_on = False
+            need_go_on = False
             currentNum = randint(1, 6) + randint(1, 6)
             if currentNum == 7:
                 need_go_on = False

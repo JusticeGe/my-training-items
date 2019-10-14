@@ -44,7 +44,16 @@
         >
       </el-col>
     </el-row>
-    <el-table size="mini" :data="data" :fit="true" border stripe>
+    <el-table
+      size="mini"
+      :data="data"
+      @selection-change="selectionChange"
+      @select-all="selectAll"
+      @row-click="rowClick"
+      :fit="true"
+      :highlight-current-row="true"
+      border
+    >
       <template v-for="col in tableCol">
         <el-table-column
           v-if="col.type"
@@ -53,7 +62,11 @@
           :width="col.width || '50'"
           :type="col.type"
           :fixed="col.fixed"
-        ></el-table-column>
+        >
+          <template slot="header">
+            <el-button>hello</el-button>
+          </template>
+        </el-table-column>
         <el-table-column
           v-else-if="col.slot"
           :label="col.label"
@@ -72,17 +85,10 @@
           :fixed="col.fixed"
           :prop="col.prop"
           :width="col.width || ''"
+          :show-overflow-tooltip="true"
         >
           <template slot-scope="scope">
-            <el-tooltip
-              :content="scope.row | parseTableData(col.prop, ['toStr'])"
-              placement="top"
-              effect="light"
-            >
-              <span>{{
-                scope.row | parseTableData(col.prop, col.funcArr)
-              }}</span>
-            </el-tooltip>
+            <span>{{ scope.row | parseTableData(col.prop, col.funcArr) }}</span>
           </template>
         </el-table-column>
       </template>
@@ -90,11 +96,11 @@
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page="page"
+      :current-page="page.currentPage"
       :page-sizes="sizes"
-      :page-size="size"
+      :page-size="page.size"
       layout="total, sizes, prev, pager, next, jumper"
-      :total="total"
+      :total="page.total"
     >
     </el-pagination>
   </el-card>
@@ -104,46 +110,26 @@
 import Sortable from "sortablejs";
 export default {
   name: "GcTable",
-  props: ["page", "size", "total"],
+  props: {
+    cols: {
+      type: Array,
+      default: () => [],
+      required: true
+    },
+    data: {
+      type: Array,
+      default: () => [],
+      required: true
+    },
+    page: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       operate: 12,
       columnOp: 12,
-      cols: [
-        { type: "index", prop: "a", label: "序号" },
-        { type: "selection", prop: "cc", label: "全选" },
-        { label: "姓名", prop: "name" },
-        { label: "年龄", prop: "age" },
-        { label: "学校", prop: "school" },
-        { label: "地址", prop: "address" },
-        { label: "成绩", prop: "chengji" },
-        { label: "学科", prop: "object" },
-        { label: "爱好", prop: "lov" },
-        { label: "工作", prop: "work" },
-        { label: "薪资", prop: "pay" },
-        { label: "存款", prop: "money" },
-        { label: "状态", prop: "status" }
-      ],
-      data: [
-        {
-          name: "gc",
-          age: 18,
-          school: "合肥许上海分院北京终极",
-          address: "上海市普陀区锦绣大道2999hap",
-          chengji: "1000",
-          object: "CAD，ug，机械",
-          lov: "打游戏，看电影，打篮球，踢足球"
-        },
-        {
-          name: "cm",
-          age: 16,
-          school: "合肥许上海分院北京终极",
-          address: "上海市普陀区锦绣大道2999",
-          chengji: "1000",
-          object: "CAD，ug，机械",
-          lov: "打游戏，看电影，打篮球，踢足球"
-        }
-      ],
       value: [],
       fixed: "",
       tableCol: [],
@@ -175,30 +161,36 @@ export default {
   },
   methods: {
     columnDrop() {
-      const wrapperTr = document.querySelector(".el-table__header-wrapper tr");
-      Sortable.create(wrapperTr, {
-        animation: 180,
-        delay: 0,
-        onEnd: evt => {
-          let fixedIndex = -1;
-          this.tableCol.forEach((item, index) => {
-            if (this.fixed === item.prop) {
-              fixedIndex = index;
+      const tables = document.querySelectorAll(".el-table__header-wrapper");
+      tables.forEach(item => {
+        const wrapperTr = item.querySelector("tr");
+        Sortable.create(wrapperTr, {
+          animation: 180,
+          delay: 0,
+          onEnd: evt => {
+            let fixedIndex = -1;
+            this.tableCol.forEach((item, index) => {
+              if (this.fixed === item.prop) {
+                fixedIndex = index;
+              }
+            });
+            const newIndex =
+              evt.newIndex <= fixedIndex ? evt.newIndex - 1 : evt.newIndex;
+            const oldIndex =
+              evt.oldIndex <= fixedIndex ? evt.oldIndex - 1 : evt.oldIndex;
+            const oldItem = this.tableCol[oldIndex];
+            if (
+              this.tableCol[newIndex].fixed ||
+              this.tableCol[oldIndex].fixed
+            ) {
+              return;
             }
-          });
-          const newIndex =
-            evt.newIndex <= fixedIndex ? evt.newIndex - 1 : evt.newIndex;
-          const oldIndex =
-            evt.oldIndex <= fixedIndex ? evt.oldIndex - 1 : evt.oldIndex;
-          const oldItem = this.tableCol[oldIndex];
-          if (this.tableCol[newIndex].fixed || this.tableCol[oldIndex].fixed) {
-            return;
+            this.tableCol.splice(oldIndex, 1);
+            setTimeout(() => {
+              this.tableCol.splice(newIndex, 0, oldItem);
+            });
           }
-          this.tableCol.splice(oldIndex, 1);
-          setTimeout(() => {
-            this.tableCol.splice(newIndex, 0, oldItem);
-          });
-        }
+        });
       });
     },
     handleSizeChange(val) {
@@ -206,6 +198,15 @@ export default {
     },
     handleCurrentChange(val) {
       this.$emit("handleSizeChange", val);
+    },
+    selectionChange(rows) {
+      this.$emit("selection-change", rows);
+    },
+    selectAll(rows) {
+      rows.splice(0, rows.length);
+    },
+    rowClick(...args) {
+      console.log(args);
     }
   },
   mounted() {
