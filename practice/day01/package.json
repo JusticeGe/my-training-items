@@ -1,0 +1,17 @@
+{
+  "name": "day01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cssmini": "^18.5.31",
+    "mini-css": "^1.0.3",
+    "minify": "^5.1.1"
+  }
+}
