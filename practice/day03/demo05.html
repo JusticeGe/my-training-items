@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 全程实例</title>
+</head>
+<body>
+    <header>
+        <nav>
+            JavaScript 控制表单 - 动态添加、删除下拉菜单选项
+        </nav>
+    </header>
+
+    <from name="formSelectAddRemove" method="get">
+        <table>
+            <caption></caption>
+            <tr>
+                <th rowspan="1" colspan="1"></th>
+                <td rowspan="1" colspan="3">
+                    <fieldset>
+                        <legend>添加选项</legend>
+                        <table>
+                            <tr>
+                                <th rowspan="1" colspan="1">Value:</th>
+                                <td rowspan="1" colspan="1">
+                                    <input type="text" class="input-sel" name="optValue" id="id-optValue"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th rowspan="1" colspan="1">Text:</th>
+                                <td rowspan="1" colspan="1">
+                                    <input type="text" class="input-sel" name="optText" id="id-optText"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td rowspan="1" colspan="1">
+                                    <input type="button" id="id-input-add-opt" value="添加选项" onclick="on_add_opt_click(this.id)"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <th rowspan="1" colspan="1">Hobby:</th>
+                <td rowspan="1" colspan="1">
+                    <select name="'selHobby" id="id-selHobby">
+                        <option value="">请选择...</option>
+                        <option value="sport" selected>Sport</option>
+                        <option value="reading">Reading</option>
+                        <option value="tour">Tour</option>
+                    </select>
+                </td>
+                <th></th>
+                <td rowspan="1" colspan="1">
+                    <input type="button" id="id-input-remove-opt" value="删除选项" onclick="on_remove_opt_value(this.id)"/>
+                </td>
+            </tr>
+        </table>
+    </from>
+    <script>
+        var selHobby = document.getElementById('id-selHobby')
+        function on_remove_opt_value(id) {
+            selHobby.remove(selHobby.selectedIndex)
+        }
+        function on_add_opt_click(id){
+            let option = document.createElement('option')
+            option.value = document.getElementById('id-optValue').value
+            option.text = document.getElementById('id-optText').value
+            selHobby.add(option, null)
+        }
+    </script>
+</body>
+</html>

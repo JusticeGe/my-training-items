@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <select id="id-select-lang">
+        <option>ch</option>
+        <option>en</option>
+        <option>fr</option>
+        <option>ge</option>
+        <option>hk</option>
+    </select>
+    <input type="button" onclick="on_getIndex()"/>
+    <script>
+        function on_getIndex() {
+            const select = document.getElementById('id-select-lang')
+            const index = select.selectedIndex
+            const o = select.options[index]
+            console.log(index, o.text)
+        }
+    </script>
+</body>
+</html>

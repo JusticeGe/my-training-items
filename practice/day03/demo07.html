@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 全程实例</title>
+</head>
+<body>
+<header>
+    <nav>JavaScript 控制DOM - 动态创建网页新文本段落</nav>
+</header>
+<div id="id-div1">
+    <p>动态创建文本段落</p>
+</div>
+<div id="id-div2">
+    <p>已经存在的段落</p>
+    <p>动态追加文本</p>
+</div>
+<div id="id-div3">
+    <p>第三段文本段落</p>
+    <p>动态插入文本</p>
+    <p>第三段文本段落</p>
+</div>
+<input type="button" onclick="removeChild_p(this.value)" value="动态创建文本段落">
+<input type="button" onclick="remove_p(this.value)" value="动态追加文本段落">
+<input type="button" onclick="removeChild_all(this.value)" value="动态插入文本段落">
+<script>
+    function removeChild_p() {
+        var id_div1 = document.getElementById('id-div1')
+        var child_p = id_div1.childNodes
+        id_div1.removeChild(child_p[0])
+    }
+    function remove_p() {
+        var id_div2 = document.getElementById('id-div2')
+        var child_p = id_div2.childNodes
+        id_div2.remove(child_p)
+    }
+    function removeChild_all() {
+        var div3 = document.getElementById('id-div3')
+        var child = div3.children
+        var p1 = child[0]
+        var p2 = child[1]
+        p1.innerText = 'huanyixia '
+        p2.innerHTML = '<p>keyima asdads </p>'
+    }
+</script>
+</body>
+</html>

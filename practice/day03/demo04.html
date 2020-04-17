@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript控制表单 - 高亮显示表单中的焦点控件</title>
+</head>
+<body>
+    <form name="highlightForm" method="get">
+        <table>
+            <tr>
+                <th>First Name:</th>
+                <td>
+                    <input type="text" id="id-fName" autofocus value="King"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>
+                    <input type="text" id="id-lName" value="Wang"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        const inputs = document.getElementsByTagName('input')
+        const addFocusLister = function (el) {
+            // 通过闭包解决
+            let last;
+            return function () {
+                el.addEventListener('focus', () => {
+                    if(last) {
+                        last.style.border = ''
+                        last.style.fontWeight = ''
+                    }
+                    el.style.border = '2px solid #666'
+                    el.style.fontWeight = 'bold'
+                    last = el
+                })
+            }
+        }
+        Array.prototype.forEach.call(inputs, addFocusLister)
+    </script>
+</body>
+</html>

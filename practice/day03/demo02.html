@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 初始化表单中所有控件</title>
+    <style>
+        html, body{
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>JavaScript控制表单 - 初始化表单里的所有控件</nav>
+        <form name="form" method="post" action="http://127.0.0.1:800">
+            <p>
+                <label>
+                    First Name:
+                    <input type="text" name="fName" id="id-fName"/>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Last Name:
+                    <input type="text" name="lName" id="id-lName"/>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Gender:
+                    <select name="gender" id="id-gender">
+                        <option>请选择</option>
+                        <option value="1">男</option>
+                        <option value="0">女</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Birth:
+                    <input type="date" name="birth" id="id-birth"/>
+                </label>
+            </p>
+            <p>
+                Hobby:
+                <br />
+                <label>
+                    <input type="checkbox" name="hobby" value="sport"/>
+                    Sport
+                </label>
+                <label>
+                    <input type="checkbox" name="hobby" value="reading"/>
+                    Reading
+                </label>
+                <label>
+                    <input type="checkbox" name="hobby" value="tour"/>
+                    Tour
+                </label>
+                <label>
+                    <input type="checkbox" value="" onchange="change(this.checked)">
+                    全选
+                </label>
+                <input value="反选" type="button" onclick="InvertSelection()"/>
+            </p>
+            <input type="submit" value="提交"/>
+        </form>
+    </header>
+    <script type="text/javascript">
+        // const els = form.elements
+        // console.log(form.value)
+        // Array.prototype.forEach.call(els, (el) => {
+        //    if(el.name) {
+        //        console.log(el.value)
+        //    }
+        // })
+        function initAllEle() {
+            //TODO: text
+            document.getElementById('id-fName').value = 'Gc'
+            document.getElementById('id-lName').value = '葛晨'
+        //    TODO:select
+            document.getElementById('id-gender').selectedIndex = 1
+        //    TODO: date
+            var now = new Date()
+            var day = ('0' + now.getDate()).slice(-2)
+            var month = ('0' + (now.getMonth() + 1)).slice(-2)
+            var today = now.getFullYear() + '-' + (month) + '-' + day
+            console.log(today)
+            document.getElementById('id-birth').value = today
+        //    TODO: checkbox
+            var checkHobby = document.getElementsByName('hobby')
+            Array.prototype.forEach.call(checkHobby,el => el.checked = true)
+        }
+        initAllEle()
+
+        const hobbys = document.getElementsByName('hobby')
+
+        function change(e) {
+            let func;
+            if(e) {
+                func = Array.prototype.forEach.bind(hobbys, el => el.checked = true)
+            } else {
+                func =  Array.prototype.forEach.bind(hobbys, el => el.checked = false)
+            }
+            func()
+        }
+        // !反选
+        function InvertSelection() {
+            Array.prototype.forEach.call(hobbys, el => el.checked = !el.checked)
+        }
+    </script>
+</body>
+</html>

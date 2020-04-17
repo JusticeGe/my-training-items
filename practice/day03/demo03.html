@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript控制表单 - 如何使用隐藏控件</title>
+</head>
+<body>
+    <form name="formHidden" method="get" action="http://127.0.0.1:800">
+        <table>
+            <caption>乘客卧铺铺位分配</caption>
+            <tr>
+                <td>姓名:</td>
+                <td>
+                    <input type="text" name="name" id="id-name"/>
+                </td>
+            </tr>
+            <tr>
+                <th>出生年月:</th>
+                <td>
+                    <input type="month" name="birth" id="id-birth" onchange="on_birth_change(this.value)"/>
+                    <input type="hidden" name="hidden-level" id="id-hidden-level" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" id="id=submit" value="提交"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script type="text/javascript">
+        function on_birth_change(value) {
+            console.log('阿萨德',value)
+        }
+        window.onload = function() {
+            getLowerCase = function (str, type) {
+                type = type || 'locale'
+                return type === 'locale' && str.toLocaleUpperCase() || str.toUpperCase()
+            }
+
+            console.log(getLowerCase('Asdcqwe'))
+        }
+
+    </script>
+</body>
+</html>
