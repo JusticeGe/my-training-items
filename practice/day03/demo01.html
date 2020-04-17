@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>demo01</title>
+    <title>JavaScript 控制表单 - 遍历表单</title>
 </head>
 <body>
-
+    <form name="formTraverse" onsubmit="submit()" method="get" action="http://127.0.0.1:800">
+        <p>
+            <label>
+                First Name:
+                <input type="text" name="fName"/>
+            </label>
+            <label>
+                Last Name:
+                <input type="text" name="lName"/>
+            </label>
+            <label>
+                性别:
+                <select id="id-sel-gender" multiple name="gender">
+                    <option value="0">请选择...</option>
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
+            </label>
+            <input type="submit" value="Submit"/>
+            <input type="button" value="提交" onclick="test()"/>
+            <input type="button" value="获取活动元素" onclick="getActiveElement()"/>
+        </p>
+    </form>
+    <script type="text/javascript">
+        function test() {
+            // var method = formTraverse.method
+            formTraverse.method = 'post'
+            formTraverse.submit()
+        }
+        function getActiveElement() {
+            // TODO: 获取当前聚焦元素
+            console.log(document.activeElement)
+        }
+    </script>
 </body>
 </html>

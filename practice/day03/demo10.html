@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <input id="test" type="button" value="0"/>
+        <input type="button" value="1"/>
+        <input type="button" value="2"/>
+        <input type="button" value="3"/>
+        <input type="button" value="4"/>
+        <input type="button" value="5"/>
+        <input type="button" value="6"/>
+        <input type="button" value="7"/>
+        <input type="button" value="8"/>
+        <input type="button" value="9"/>
+        <input type="button" value="#"/>
+        <input type="button" value="*"/>
+        <input type="button" value="c"/>
+        <input type="button" value="-"/>
+    </div>
+    <span id="num"></span>
+    <script>
+        function call(val) {
+            if (parseInt(val) >= 0) {
+                phone += val
+            }
+            if (val === 'c') {
+                phone = ''
+            }
+            if(val === '-') {
+                phone.substr(0, phone.length - 2 )
+            }
+            if(val === '#') {
+                console.log('打电话', phone)
+            }
+            if(val === '*') {
+                console.log("取消")
+            }
+        }
+        const div = document.getElementsByTagName('div')[0]
+        const child = div.children
+        const bound = function(el) {
+            const num = document.getElementById('num')
+            let phone = '';
+
+        }
+        Array.prototype.forEach.call(child, bound)
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #button:focus {
+            color: #525252;
+        }
+    </style>
+</head>
+<body>
+    <button id="button" onclick="test()">模拟按钮</button>
+    <input type="text" class="css" name="name" id="id-name" value="King"/>
+    <script>
+        // document.getElementById('button').click()
+        function test() {
+            console.log('hello')
+        }
+        const btn = document.getElementById('button')
+        btn.addEventListener('focus', () => {
+            console.log('focus')
+        })
+        //TODO: 这种方式并不会触发focus状态
+        btn.click()
+        //
+        btn.focus()
+    </script>
+<script>
+    var input = document.getElementsByTagName('input')
+    var attrs = input[0].attributes
+    var arr = ['password', 'newCss', 'test', 'id-test', 'hello world']
+    Array.prototype.forEach.call(attrs, (e, i) => {
+        e.value = arr[i]
+        console.log(e.name, e.value)
+    })
+</script>
+</body>
+</html>

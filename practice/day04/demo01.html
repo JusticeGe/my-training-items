@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript 全程实例</title>
+</head>
+<body>
+<header>
+    <nav aria-label>JavaScript 按钮特效 - 为按钮添加背景色</nav>
+</header>
+<!-- 控制按钮颜色 -->
+<section>
+    <div class="css-div-button">
+        <button>Red</button>
+        <button>Yellow</button>
+        <button>Blue</button>
+    </div>
+    <script>
+        var colorBtn = ['red', 'yellow', 'blue']
+        var btns = document.getElementsByTagName('button')
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].style.background = colorBtn[i]
+        }
+    </script>
+</section>
+<!-- 表单行为 -->
+<section>
+    <form name="test" method="get" enctype="multipart/form-data" action="https://baidu.com">
+        <p>
+            <label>
+                FirstName:
+                <input type="text" name="fName" value="King"/>
+            </label>
+            <button type="submit" name="btnCh" onclick="submit_ch()">提交</button>
+            <button type="submit" name="btnCh" onclick="submit_en()">提交</button>
+        </p>
+    </form>
+    <script>
+        var submit_ch,
+            submit_en;
+        window.onload = function () {
+            document.test.onkeypress = function (ev) {
+                ev = window.event || ev;
+                if (ev.keyCode === 13 || ev.which === 13) {
+                    console.log(ev)
+                    return false
+                }
+            }
+            submit_ch = function () {
+                test.action = 'https://mo.fish/main/home/hot?nsukey=WwsAVH%2FEoBlN85cisSIpkB53bQCDgHLAYfAB4W83jzUYPK%2BbGeOvnAgTjVCpz2NbpdZGbOGCqh2%2BGu1uO0yxh7TIncYZxkC3NMm%2BD0MeLXgc2udb4sY3%2F3jDfOO4t1e3Ug%2FmYXHYGvwtVkwKHttB1xvfgGbMaTSZG0oAkEk2tkF9iu8MAr8K8iYOHGycGl5ZLl9ut7xTCtPJ8nJTMxYxiQ%3D%3D'
+                test.submit()
+            }
+            submit_en = function () {
+            }
+        }
+    </script>
+</section>
+<section>
+    <header>
+        <nav aria-label><!-- 注释 -->
+            按钮在单击后失效
+        </nav>
+    </header>
+    <button id="test-btn">测试</button>
+    <script>
+        document.getElementById('test-btn').addEventListener('click', e => {
+            e.target.disabled = true
+        })
+    </script>
+</section>
+<section>
+    <header>
+        <nav aria-label="he">
+            确认框
+        </nav>
+        <form action="https://baidu.com" method="get" name="form">
+            <button type="submit" onclick="testFor()">测试按钮</button>
+        </form>
+        <script>
+            // console.log(Object.keys(form))
+            function testFor(e) {
+                if(confirm('Please confirm to del?')){
+                    return true
+                }
+            }
+        </script>
+    </header>
+</section>
+<section>
+    <header>
+        <nav aria-label="注册倒计时">注册按钮倒计时效果</nav>
+    </header>
+    <div class="css-btn-timer">
+        <p>
+            <button id="id-btn-reg-timer" style="width: 150px; height: 32px;">注册(剩余10秒)</button>
+        </p>
+    </div>
+    <script>
+        const btn = document.getElementById('id-btn-reg-timer')
+        let timer ;
+        let time = 10
+        btn.addEventListener('click', () => {
+            if(timer) {
+                return
+            }
+            // btn.innerText = time
+            timer = setInterval(() => {
+                time--
+                btn.innerText = time
+                if(!time) {
+                    window.clearInterval(timer)
+                    time = 10
+                }
+            }, 1000)
+        })
+    </script>
+</section>
+
+<section>
+    <header>
+        <nav aria-label="定时器操作">定时器操作</nav>
+    </header>
+    <div>
+        <h1 id="showTimer">10</h1>
+        <button onclick="start()">开始倒计时</button>
+        <button onclick="pause()">暂停倒计时</button>
+        <button onclick="restore()">恢复倒计时</button>
+        <button onclick="stop()">停止倒计时</button>
+    </div>
+    <script>
+        const goal = document.getElementById('showTimer')
+        let timer02;
+        let time01 = 10
+        function start() {
+           timer02 =  setInterval(() => {
+                time01--
+                goal.innerText = time01
+            }, 1000)
+        }
+        function pause(){
+            window.clearInterval(timer02)
+        }
+        function restore(){
+            timer =  setInterval(() => {
+                time01--
+                goal.innerText = time01
+            }, 1000)
+        }
+        function stop() {
+            window.clearInterval(timer02)
+            time01 = 10
+            goal.innerText = 10
+        }
+    </script>
+</section>
+<section>
+    <header>
+        <nav aria-label="阅读完用户协议才能点击注册">阅读完用户协议才能点击注册</nav>
+    </header>
+    <p>
+        <textarea readonly id="id-textarea-reg" onscroll="on_scroll_reg(this.id)">
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册
+            阅读完用户协议才能点击注册阅读完用户协议才能点击注册阅读完用户协议才能点击注册完用户协议才能点击注册阅读完用户协议才能点击注册
+        </textarea>
+        <button disabled id="reg">用户注册</button>
+    </p>
+    <script>
+        function on_scroll_reg(id) {
+            var agreement = document.getElementById(id)
+            console.log(agreement.scrollTop, agreement.clientHeight, agreement.scrollHeight)
+            if((agreement.scrollTop + agreement.clientHeight) >= agreement.scrollHeight) {
+                // console.log('isin')
+                var regBtn = document.getElementById('reg')
+                regBtn.disabled = false
+            }
+        }
+    </script>
+</section>
+
+</body>
+</html>
