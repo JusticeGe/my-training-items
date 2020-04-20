@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 全程实例</title>
+</head>
+
+<body>
+  <section>
+    <header>
+      <nav aria-label>
+        带下划线的链接
+      </nav>
+      <a href="http://baidu.com">带下划线的链接</a>
+      <br>
+      <br>
+      <a name='#'>带下划线的链接</a>
+      <button onclick="addUnderLine()">为所有的链接添加下划线</button>
+    </header>
+    <script>
+      var addUnderLine = function () {
+        var as = document.getElementsByTagName('a')
+        Array.prototype.forEach.call(as, el => {
+          el.style.textDecoration = 'underline'
+          el.addEventListener('click', (e) => {
+            alert('超链接被点击了')
+            return false
+          });
+          
+        })
+      }
+    </script>
+  </section>
+  <section>
+    <header>
+      <nav aria-label>关闭窗口的"X"链接</nav>
+    </header>
+    <a href="http://baidu.com" id="id-x-link">X</a>
+    <script>
+      var xLink = document.getElementById('id-x-link')
+      xLink.onclick = function() {
+        window.close()
+        return false
+      }
+    </script>
+  </section>
+</body>
+
+</html>

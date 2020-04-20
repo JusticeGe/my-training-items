@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript 全程实例</title>
+</head>
+<body>
+  <section>
+    <header>
+      <nav>
+        图片
+      </nav>
+    </header>
+    <img src="./fd59ee22c1727c5703003c9e753dcecf.jpg" alt='图片' id="id-img" />
+    <button onclick="toScale(-1)">缩小</button>
+    <button onclick="toScale(1)">方大</button>
+    <script>
+      var x = 1;
+      var y = 1;
+      var idImg = document.getElementById('id-img')
+      // var browser = getBrowser()
+      function toScale(r) {
+        if(r > 0) {
+          x += 0.1
+          y += 0.1
+        } else {
+          x -= 0.1
+          y -= 0.1
+        }
+        idImg.style.transform = 'scale(' + x + ',' + y + ')'
+      }
+    </script>
+  </section>
+</body>
+</html>

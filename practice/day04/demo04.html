@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鸭子类型</title>
+</head>
+
+<body>
+  <script>
+    // 原型模式
+    (function () {
+      var Plane = function () {
+        this.blood = 100
+        this.attackLevel = 1
+        this.defenseLevel = 1
+      }
+
+      var plane = new Plane()
+
+      Object.create = Object.create || function (obj) {
+        var F = function () {}
+        F.prototype = obj
+        return new F()
+      }
+
+      plane.blood = 500
+      plane.attackLevel = 10
+      plane.defenseLevel = 8
+
+      var clonePlane = Object.create(plane)
+
+      console.log(clonePlane)
+    })()
+
+    /**
+
+
+      */
+  </script>
+</body>
+
+</html>
