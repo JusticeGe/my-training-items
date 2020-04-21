@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body,html {
+      background: #000;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    a{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100px;
+      width: 400px;
+      line-height: 100px;
+      text-align: center;
+      color: #fff;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+      background-size: 400%;
+      cursor: pointer;
+    }
+
+    a::before{
+      content: '';
+      position: absolute;
+      top: -2px;
+      bottom: -2px;
+      left: -2px;
+      right: -2px;
+      background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+      filter: blur(10px);
+      border-radius: 50px;
+      background-size: 400%;
+      z-index: -1;
+    }
+
+    a:hover{
+      animation: sun 8s infinite;
+    }
+
+    a:hover::before{
+      animation: sun 8s infinite;
+    }
+
+    @keyframes sun {
+      100%{
+        background-position: -400% 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a>Demo07</a>
+</body>
+</html>

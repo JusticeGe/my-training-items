@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简易Promise</title>
+</head>
+<body>
+  <script>
+    /*
+      简单promise实现
+    */
+    class MyPromise {
+
+      // !构造方法接受一个回调
+      constructor(executor) {
+        this._resolveQueue = []
+        this._rejectQueue = []
+
+        let _resolve = val => {
+          while(this._resolveQueue.length){
+            const callback = this._resolveQueue.shift()
+            callback(val)
+          }
+        }
+
+        let _reject = val => {
+          while(this._rejectQueue.length) {
+            const callback = this._rejectQueue.shift()
+            callback(val)
+          }
+        }
+        executor(_resolve, _reject)
+      }
+
+      then(resolveFn, rejectFn) {
+        this._resolveQueue.push(resolveFn)
+        this._rejectQueue.push(rejectFn)
+      }
+    }
+
+    const func = (resolve, reject) => {
+      setTimeout( () => {
+        resolve('result')
+      }, 1000)
+    }
+
+    const p1 = new MyPromise(func)
+    p1.then(console.log)
+  </script>
+</body>
+</html>
